@@ -1,25 +1,38 @@
 // For format details, see https://aka.ms/vscode-remote/devcontainer.json or this file's README at:
 // https://github.com/microsoft/vscode-dev-containers/tree/v0.122.1/containers/javascript-node-12
 {
-	"name": "Node.js 12",
-	"dockerFile": "Dockerfile",
+  "name": "Node.js 12",
+  "dockerFile": "Dockerfile",
 
-	// Set *default* container specific settings.json values on container create.
-	"settings": {
-		"terminal.integrated.shell.linux": "/bin/zsh"
-	},
+  // Set *default* container specific settings.json values on container create.
+  "settings": {
+    "terminal.integrated.shell.linux": "/bin/zsh",
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
+    "eslint.validate": ["vue", "javascript"],
+    "eslint.format.enable": true,
+    "eslint.alwaysShowStatus": true,
+    "[vue]": {
+      "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+    },
+    "[javascript]": {
+      "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+    },
+    "vetur.format.enable": false
+  },
+  "remoteEnv": {
+    "EDITOR": "vim"
+  },
 
-	// Add the IDs of extensions you want installed when the container is created.
-	"extensions": [
-		"mubaidr.vuejs-extension-pack"
-	],
+  // Add the IDs of extensions you want installed when the container is created.
+  "extensions": ["mubaidr.vuejs-extension-pack"],
 
-	// Use 'forwardPorts' to make a list of ports inside the container available locally.
-	// "forwardPorts": [],
+  // Use 'forwardPorts' to make a list of ports inside the container available locally.
+  "forwardPorts": [8080],
 
-	// Use 'postCreateCommand' to run commands after the container is created.
-	// "postCreateCommand": "yarn install",
+  // Use 'postCreateCommand' to run commands after the container is created.
+  // "postCreateCommand": "yarn install",
 
-	// Uncomment to connect as a non-root user. See https://aka.ms/vscode-remote/containers/non-root.
-	"remoteUser": "node"
+  // Uncomment to connect as a non-root user. See https://aka.ms/vscode-remote/containers/non-root.
+  "remoteUser": "node"
 }
