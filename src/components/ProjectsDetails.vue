@@ -10,7 +10,14 @@
         ></v-text-field> </v-col
     ></v-row>
     <p>Participants</p>
-    <template> </template>
+    <v-row v-for="member in currentProject.members" v-bind:key="member.name">
+      <v-col>
+        <v-text-field v-model="member.name"></v-text-field>
+      </v-col>
+      <v-col>
+        <v-text-field v-model="member.email"></v-text-field>
+      </v-col>
+    </v-row>
     <v-btn :disabled="!valid" color="success" class="mr-4" @click="validate">
       Validate
     </v-btn>
