@@ -23,3 +23,6 @@ pnpm-debug.log*
 
 # Project related
 /ignored/*
+
+# Tests artifacts
+coverage
