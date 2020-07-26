@@ -1,12 +1,35 @@
 <template>
-  <div id="app">
+  <v-app>
+    <v-btn @click="loginWithFirebase" v-if="!userLoggedIn">Login</v-btn>
+    <template v-if="userLoggedIn">
+      <v-btn @click="logoutFromFirebase" v-if="userLoggedIn">Logout</v-btn>
+      {{ userLoggedIn.displayName }}
+    </template>
     <div id="nav">
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link>
     </div>
     <router-view />
-  </div>
+  </v-app>
 </template>
+
+<script>
+export default {
+  computed: {
+    userLoggedIn() {
+      return this.$store.getters.user;
+    },
+  },
+  methods: {
+    loginWithFirebase() {
+      this.$store.dispatch("signInAction");
+    },
+    logoutFromFirebase() {
+      this.$store.dispatch("signOutAction");
+    },
+  },
+};
+</script>
 
 <style lang="scss">
 #app {
