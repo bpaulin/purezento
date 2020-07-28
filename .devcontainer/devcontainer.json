@@ -3,7 +3,8 @@
 {
   "name": "Node.js 12",
   "dockerFile": "Dockerfile",
-
+  "initializeCommand": "touch ${localWorkspaceFolder}/.devcontainer/.env",
+  "runArgs": ["--env-file", "${localWorkspaceFolder}/.devcontainer/.env"],
   // Set *default* container specific settings.json values on container create.
   "settings": {
     "terminal.integrated.shell.linux": "/bin/zsh",
@@ -28,7 +29,7 @@
   "extensions": ["mubaidr.vuejs-extension-pack"],
 
   // Use 'forwardPorts' to make a list of ports inside the container available locally.
-  "forwardPorts": [8080],
+  "forwardPorts": [8080, 8090, 8091, 8092],
 
   // Use 'postCreateCommand' to run commands after the container is created.
   // "postCreateCommand": "yarn install",
