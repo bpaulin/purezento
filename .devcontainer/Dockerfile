@@ -11,5 +11,5 @@ FROM mcr.microsoft.com/vscode/devcontainers/javascript-node:0-12
 #
 RUN apt-get update \
     && export DEBIAN_FRONTEND=noninteractive \
-    && apt-get -y install --no-install-recommends vim \
-    && yarn global add @vue/cli
+    && apt-get -y install --no-install-recommends vim openjdk-8-jre\
+    && yarn global add @vue/cli firebase-tools

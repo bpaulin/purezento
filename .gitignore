@@ -23,6 +23,8 @@ pnpm-debug.log*
 
 # Project related
 /ignored/*
+.firebase
+*-debug.log
 
 # Tests artifacts
 coverage
