@@ -1,7 +1,7 @@
 import Vue from "vue";
 import Vuex from "vuex";
 import createPersistedState from "vuex-persistedstate";
-import firebase from "firebase";
+import { firebase, auth } from "@/db";
 
 Vue.use(Vuex);
 
@@ -37,8 +37,7 @@ export default new Vuex.Store({
     signInAction({ commit }) {
       const provider = new firebase.auth.GoogleAuthProvider();
 
-      firebase
-        .auth()
+      auth
         .signInWithPopup(provider)
         .then((response) => {
           commit("setUser", response.user);
@@ -52,8 +51,7 @@ export default new Vuex.Store({
     },
 
     signOutAction({ commit }) {
-      firebase
-        .auth()
+      auth
         .signOut()
         .then(() => {
           commit("setUser", null);
