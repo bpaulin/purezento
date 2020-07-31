@@ -20,9 +20,10 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v1
         with:
-          start: npm run serve
+          start: yarn serve --mode production
           wait-on: http://localhost:8080/
-          config_file: cypress.json
+          config-file: cypress.json
           spec: "tests/e2e/**/*"
+          headless: true
         env:
           CYPRESS_baseUrl: http://localhost:8080/
