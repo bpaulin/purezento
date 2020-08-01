@@ -44,6 +44,16 @@
       "problemMatcher": []
     },
     {
+      "label": "yarn: TF",
+      "type": "shell",
+      "command": "yarn test:e2e --headless",
+      "detail": "vue-cli-service test:e2e",
+      "presentation": {
+        "reveal": "always"
+      },
+      "problemMatcher": []
+    },
+    {
       "label": "start vue ui",
       "type": "shell",
       "command": "vue ui -p 8095 --headless",
