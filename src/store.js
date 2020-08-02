@@ -5,7 +5,7 @@ import { firebase, auth } from "@/db";
 
 Vue.use(Vuex);
 
-export default new Vuex.Store({
+const store = new Vuex.Store({
   plugins: [
     createPersistedState({
       storage: window.sessionStorage,
@@ -79,3 +79,9 @@ export default new Vuex.Store({
     },
   },
 });
+
+if (window.Cypress) {
+  window.__store__ = store;
+}
+
+export default store;

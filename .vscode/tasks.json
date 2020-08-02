@@ -46,7 +46,7 @@
     {
       "label": "yarn: TF",
       "type": "shell",
-      "command": "yarn test:e2e --headless",
+      "command": "yarn test:e2e --url http://localhost:8080 --headless",
       "detail": "vue-cli-service test:e2e",
       "presentation": {
         "reveal": "always"

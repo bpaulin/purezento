@@ -1,14 +1,14 @@
 <template>
   <v-app id="inspire">
-    <v-navigation-drawer v-model="drawer" app>
+    <v-navigation-drawer v-model="drawer" app :permanent="true">
       <template v-slot:prepend v-if="userLoggedIn">
         <v-list-item two-line>
-          <v-list-item-avatar>
+          <v-list-item-avatar data-avatar>
             <img :src="userLoggedIn.photoURL" />
           </v-list-item-avatar>
 
           <v-list-item-content>
-            <v-list-item-title>{{
+            <v-list-item-title data-username>{{
               userLoggedIn.displayName
             }}</v-list-item-title>
           </v-list-item-content>
@@ -34,7 +34,7 @@
       </v-list>
 
       <template v-slot:append>
-        <div class="pa-2">
+        <div class="pa-2" data-loginaction>
           <v-btn block @click="loginWithFirebase" v-if="!userLoggedIn"
             >Login</v-btn
           >

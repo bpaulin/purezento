@@ -1,4 +1,4 @@
-name: Build and Deploy
+name: CD
 on:
   push:
     branches:
@@ -6,31 +6,37 @@ on:
 
 jobs:
   build:
-    name: Build
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Repo
+      - name: Checkout
         uses: actions/checkout@master
-      - run: yarn install --frozen-lockfile --ignore-scripts
-      - run: yarn build
-      - name: Archive Production Artifact
+
+      - name: Install deps
+        run: yarn install --frozen-lockfile --ignore-scripts
+
+      - name: Build
+        run: yarn build
+
+      - name: Archive artifact
         uses: actions/upload-artifact@master
         with:
           name: dist
           path: dist
+
   deploy:
-    name: Deploy
-    needs: Build
+    needs: build
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Repo
+      - name: Checkout
         uses: actions/checkout@master
-      - name: Download Artifact
+
+      - name: Download artifact
         uses: actions/download-artifact@master
         with:
           name: dist
           path: dist
-      - name: Deploy to Firebase
+
+      - name: Deploy
         uses: w9jds/firebase-action@master
         with:
           args: deploy --only hosting -m ${GITHUB_SHA}
