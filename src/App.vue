@@ -73,6 +73,10 @@ export default {
         icon: "mdi-home",
       },
       {
+        route: "/projects",
+        label: "Projects",
+      },
+      {
         route: "/about",
         label: "About",
         icon: "mdi-information-variant",
